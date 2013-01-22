@@ -1,0 +1,44 @@
+
+particle_system Tower/Jinx
+{
+	quota	2000
+	material	Examples/Flare
+	particle_width	4
+	particle_height	4
+	cull_each	true
+	renderer	billboard
+	sorted	true
+	local_space	false
+	billboard_type	point
+
+	emitter Box
+	{
+		angle	180
+		colour	1 0.6 0.3
+		direction	0 -1 0
+		emission_rate	800
+		position	0 0 0
+		velocity	60
+		velocity_min	40
+		velocity_max	80
+		time_to_live	0.2
+		time_to_live_min	0.1
+		time_to_live_max	0.3
+		duration	0
+		duration_min	0
+		duration_max	0
+		repeat_delay	0
+		repeat_delay_min	0
+		repeat_delay_max	0
+		width	10
+		height	10
+		depth	10
+	}
+
+	affector DirectionRandomiser
+	{
+		randomness	10
+	}
+}
+
+

@@ -1,0 +1,29 @@
+material Ground/Grass
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture grass_1024.jpg
+			}
+		}
+	}
+}
+
+material Ground/Path
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.8 0.8 0.8
+
+			texture_unit
+			{
+				texture Dirt.jpg
+			}
+		}
+	}
+}

@@ -1,7 +1,8 @@
 ########
 ## TowerDefense specific
 ########
-media/
+
+#none
 
 #################
 ## Eclipse
