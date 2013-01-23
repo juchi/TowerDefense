@@ -17,7 +17,7 @@ Wave::Wave(Game* game, ConfigElement* waveElement) : mGame(game), mEnemiesLeft(0
     type.power = atoi(node->Attribute("damages"));
     type.health = atoi(node->Attribute("health"));
     type.moneyDrop = atoi(node->Attribute("moneydrop"));
-    type.speed = atoi(node->Attribute("speed"));
+    type.speed = (float)atoi(node->Attribute("speed"));
     type.mesh = node->FirstChildElement("mesh")->Attribute("file");
 
     mTypes.push_back(type);
@@ -26,7 +26,7 @@ Wave::Wave(Game* game, ConfigElement* waveElement) : mGame(game), mEnemiesLeft(0
     mEnemiesLeft = atoi(node->GetText());
 
     node = waveElement->getFirstChildElement("frequency")->getXmlElement();
-    mEnemyDelay = atof(node->GetText());
+    mEnemyDelay = (float)atof(node->GetText());
 }
 
 bool Wave::isFinished() const

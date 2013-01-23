@@ -12,7 +12,6 @@ TowerPreview::TowerPreview(Game* game, ConfigElement* conf) : GridItem(game)
     mEntity = sceneMgr->createEntity(Game::generateUniqueName("towerPreview"), conf->getFirstChildElement("mesh")->getXmlElement()->Attribute("file"));
     mNode = sceneMgr->getRootSceneNode()->createChildSceneNode(Game::generateUniqueName("towerPreviewNode"));
     mNode->attachObject(mEntity);
-    mNode->setVisible(false);
 
     Ogre::MaterialPtr origMaterialPtr = mEntity->getSubEntity(0)->getMaterial();
     Ogre::MaterialPtr materialPtr = Ogre::MaterialManager::getSingleton().create("TowerPreview", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
@@ -30,10 +29,8 @@ TowerPreview::TowerPreview(Game* game, ConfigElement* conf) : GridItem(game)
 
 void TowerPreview::setValid(bool valid)
 {
-    if (mValid != valid) {
-        mValid = valid;
-        updateColour();
-    }
+    mValid = valid;
+    updateColour();
 }
 
 void TowerPreview::setVisible(bool visible)

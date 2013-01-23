@@ -6,6 +6,7 @@ class ConfigElement;
 class Field;
 class Player;
 class Game;
+class RangeCircle;
 class TowerPreview;
 
 class TowerBuilder
@@ -18,7 +19,7 @@ public:
     int getPrice() const;
 
     void setPreviewPosition(int x, int y);
-    void hidePreview();
+    void setPreviewVisible(bool visible);
 
 protected:
     int mPrice;
@@ -31,6 +32,7 @@ protected:
     ConfigElement* mConfData;
 
     TowerPreview* mTowerPreview;
+    RangeCircle*  mCircle;
 };
 
 #endif

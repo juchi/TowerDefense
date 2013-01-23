@@ -23,6 +23,9 @@ Game::Game(void) : mLeftPress(false), mRightPress(false), mQuit(false), mGameEnd
     initCEGUI();
     createField();
     createScene();
+
+    mViewHeight = mCamera->getViewport()->getActualHeight();
+    mViewWidth = mCamera->getViewport()->getActualWidth();
     
     mPlayer = new Player(this);
     mTowerBuilder = new TowerBuilder(this, mPlayer);
@@ -203,7 +206,7 @@ bool Game::mouseMoved(const OIS::MouseEvent &arg)
         //return BaseApplication::mouseMoved(arg);
     }
     if (mBuildMode) {
-        Ogre::Ray ray = createRayFromMouse(arg);
+        Ogre::Ray ray = createRayFromMouse();
         std::pair<int, int> coords = mField->getGridPosition(ray);
         mTowerBuilder->setPreviewPosition(coords.first, coords.second);
     }
@@ -222,11 +225,11 @@ bool Game::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
     return true;
 }
 
-void Game::manageLeftClick( const OIS::MouseEvent &arg)
+void Game::manageLeftClick(const OIS::MouseEvent &arg)
 {
     if (mBuildMode) {
         int x, y;
-        Ogre::Ray ray = createRayFromMouse(arg);
+        Ogre::Ray ray = createRayFromMouse();
         std::pair<int, int> coords = mField->getGridPosition(ray);
         x = coords.first;
         y = coords.second;
@@ -235,10 +238,10 @@ void Game::manageLeftClick( const OIS::MouseEvent &arg)
     }
 }
 
-Ogre::Ray Game::createRayFromMouse(const OIS::MouseEvent &arg)
+Ogre::Ray Game::createRayFromMouse()
 {
     CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
-    Ogre::Ray mouseRay = mCamera->getCameraToViewportRay(mousePos.d_x/float(arg.state.width), mousePos.d_y/float(arg.state.height));
+    Ogre::Ray mouseRay = mCamera->getCameraToViewportRay(mousePos.d_x/float(mViewWidth), mousePos.d_y/float(mViewHeight));
 
     return mouseRay;
 }
@@ -257,7 +260,7 @@ bool Game::keyPressed( const OIS::KeyEvent &arg )
 {
     if (arg.key == OIS::KC_B) {
         mBuildMode = !mBuildMode;
-        mTowerBuilder->hidePreview();
+        mTowerBuilder->setPreviewVisible(mBuildMode);
         updateDisplay();
     } else if (arg.key == OIS::KC_V) {
         mTimeFactor *= 2;

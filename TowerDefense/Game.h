@@ -34,9 +34,9 @@ public:
 	virtual bool mouseMoved( const OIS::MouseEvent &arg );
 	virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
     virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
-	void manageLeftClick( const OIS::MouseEvent &arg);
+	void manageLeftClick(const OIS::MouseEvent &arg);
 
-    Ogre::Ray createRayFromMouse(const OIS::MouseEvent &arg);
+    Ogre::Ray createRayFromMouse();
 
     void gameLost();
     void hitPlayerBasis(int damages);
@@ -71,6 +71,8 @@ protected:
 
     Ogre::SceneManager* mSceneMgr;
     Ogre::Camera* mCamera;
+    int mViewHeight;
+    int mViewWidth;
 
     GameInterface* mGameInterface;
 
