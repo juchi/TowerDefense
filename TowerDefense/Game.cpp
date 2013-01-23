@@ -16,7 +16,7 @@
 Game::Game(void) : mLeftPress(false), mRightPress(false), mQuit(false), mGameEnded(false), mField(0), mWaveIndex(0),
     mCurrentWave(0), mGameInterface(0), mShouldUpdateInterfaceInfo(false), mBuildMode(false), mTimeFactor(1)
 {
-    Config::getSingleton()->loadFile("config.xml");
+    Config::getSingleton()->loadFile("../config/config.xml");
 
     mSceneMgr = Ogre::Root::getSingletonPtr()->getSceneManager("sceneMgr");
 

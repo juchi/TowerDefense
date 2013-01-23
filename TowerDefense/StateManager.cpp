@@ -47,16 +47,11 @@ void StateManager::pushState(State* state)
 
 void StateManager::run(State* state)
 {
-#ifdef _DEBUG
-    mResourcesCfg = "resources_d.cfg";
-    mPluginsCfg = "plugins_d.cfg";
-#else
-    mResourcesCfg = "resources.cfg";
-    mPluginsCfg = "plugins.cfg";
-#endif
+    mResourcesCfg = "../config/resources.cfg";
+    mPluginsCfg = "../config/plugins.cfg";
+
     mRoot = new Ogre::Root(mPluginsCfg);
 
-    
     setupResources();
 
     if (!mRoot->showConfigDialog()) {

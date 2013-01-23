@@ -1,0 +1,48 @@
+
+<towerdefense>
+	<enemies>
+		<robot health="100" moneydrop="60" speed="70" damages="40">
+			<mesh file="robot.mesh" size="1" angle="0"/>
+		</robot>
+	</enemies>
+	<towers>
+		<tower damages="30" range="300.0" firedelay="1.0" price="80" pricefactor="1.4">
+			<mesh file="tower.mesh" size="1" angle="90"/>
+			<jinx speed="800" material="Tower/Jinx"/>
+		</tower>
+	</towers>
+	<waves>
+		<wave>
+			<enemy>robot</enemy>
+			<number>5</number>
+			<level>1</level>
+			<frequency>3.0</frequency>
+		</wave>
+		<wave>
+			<enemy>robot</enemy>
+			<number>15</number>
+			<level>2</level>
+			<frequency>1.5</frequency>
+		</wave>
+		<wave>
+			<enemy>robot</enemy>
+			<number>20</number>
+			<level>2</level>
+			<frequency>1.2</frequency>
+		</wave>
+	</waves>
+	<field>
+		<size>
+			<width>1000</width>
+			<height>1000</height>
+		</size>
+		<map>
+			<file>mymap.tdmap</file>
+		</map>
+	</field>
+	<player health="100" money="100">
+		<base>
+		    <mesh file=""/>
+		</base>
+	</player>
+</towerdefense>
